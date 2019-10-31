@@ -46,7 +46,7 @@ const App = () => {
         key={recipe.title}
         imageURL={recipe.field_images}
         ingredients={recipe.field_ingredients}
-      />
+        />
       ))}
       </div>
     </div>
