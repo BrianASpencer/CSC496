@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Recipe from './Recipe';
 import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-
+import renderer from 'react-test-renderer';
 import { cleanup } from '@testing-library/react';
 import "@testing-library/jest-dom";
 import { exportAllDeclaration } from '@babel/types';
@@ -38,3 +38,9 @@ describe('Recipe', () => {
         expect(text2.text()).toBe("Chicken, Alfredo Sauce, Pasta");
     })
 });
+
+test('snapshot renders', () => {
+    const component = renderer.create(<Recipe />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
