@@ -19,12 +19,17 @@ it("renders without crashing", () => {
     ReactDOM.render(<div></div>, div)
 });
 
+it("renders", () => {
+    const wrapper = mount(<Recipe 
+        title={"Chicken Alfredo"}
+                        />);
+    expect(wrapper.find("h1").text()).toBe("Chicken Alfredo");
+});
+
 describe('Recipe', () => {
     it('should show text', () => {
         const wrapper = shallow(<Recipe 
             title={"Chicken Alfredo"}
-            key={"CA"}
-            imageURL={""}
             ingredients={"Chicken, Alfredo Sauce, Pasta"}
             />);
         const text = wrapper.find("h1");
